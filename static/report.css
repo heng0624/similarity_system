@@ -1,0 +1,35 @@
+ body { 
+    font-family: Arial; margin: 24px; 
+}
+.report-box { 
+    padding: 16px; 
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+    margin-bottom: 16px; 
+}
+        
+.image-preview { 
+    max-width: 320px; 
+    border: 1px solid #aaa; 
+    margin: 10px; 
+    display:block;
+ }
+        
+pre { 
+    white-space: pre-wrap; 
+    background: #f7f7f7; 
+    padding: 12px;
+     border-radius:6px; 
+     max-height:400px; 
+     overflow:auto; }
+        
+.btn { 
+    padding: 8px 12px; 
+    background:#007bff; 
+    color:white; 
+    border:none;
+     border-radius:6px; 
+     cursor:pointer; }
+.diff-container {
+     margin-top: 20px; 
+    }
