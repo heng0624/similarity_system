@@ -1,0 +1,19 @@
+{% extends "header.html" %}
+
+{% block content %}
+  <div id="successMsg" class="success-popup" style="display:none;"></div>
+
+<h2>Profile</h2>
+<form id="profileForm">
+  <label>Username:</label><br>
+  <input type="text" name="username" id="username" value="{{ user.username }}"><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" name="email" id="email" value="{{ user.email }}"><br><br>
+
+  <button type="button" onclick="updateProfile()">Update Profile</button>
+</form>
+
+<script src="{{ url_for('static', filename='home.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<!-- templates/report.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Preview</title>
+      <link href="{{ url_for('static', filename='report.css') }}" rel="stylesheet"/>
+</head>
+<body>
+<h1>Analysis Report</h1>
+
+<div class="report-box">
+    <p><strong>Mode:</strong> {{ h.modality }}</p>
+    <p><strong>File A:</strong> {{ h.file_a_name }}</p>
+    <p><strong>File B:</strong> {{ h.file_b_name }}</p>
+    <p><strong>Similarity Score:</strong> {{ h.similarity_score }}%</p>
+    <p><strong>Date:</strong> {{ h.timestamp }}</p>
+</div>
+
+
+{% if h.diff_html %}
+<div class="diff-container">
+    <h3>Differences (side-by-side)</h3>
+    <!-- diff_html contains an HTML table from difflib.HtmlDiff -->
+    <div>
+        {{ h.diff_html | safe }}
+    </div>
+</div>
+{% endif %}
+
+<br/>
+<a href="{{ url_for('download_report', history_id=h.analysis_id) }}"><button class="btn">Download PDF</button></a>
+<button class="btn" onclick="window.print()">Print</button>
+
+</body>
+</html>

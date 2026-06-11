@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title if title else "Similarity System" }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+  <script>
+    
+  </script>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="nav-left">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('history') }}">History</a>
+  </div>
+
+  <div class="nav-right">
+    {% if session.get('user_id') %}
+      <div id="userDisplay">
+        <a href="{{ url_for('profile') }}" id="usernameText">{{ session['username'] }}</a>
+        <a href="{{ url_for('auth.logout') }}" onclick="logout()">Logout</a>
+      </div>
+    {% else %}
+      <div id="authButtons">
+        <button onclick="openModal('login')">Login</button>
+        <button onclick="openModal('signup')">Signup</button>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Auth Modal -->
+<div id="authModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <form id="loginForm" style="display:none;">
+      <h3>Login</h3>
+      <input type="text" id="loginUsername" placeholder="Username"><br>
+
+      <div class="password-wrapper">
+      <input type="password" id="loginPassword" placeholder="Password">
+      <span class="toggle-btn" onclick="togglePassword('loginPassword', this)">Show</span>
+      </div>
+      <div>
+    <a href="#" onclick="openModal('forgot')">Forgot Password?</a>
+  </div>
+      <button type="button" onclick="ajaxLogin()">Login</button>
+
+    </form>
+
+    <form id="signupForm" style="display:none;">
+      <h3>Signup</h3>
+      <input type="text" id="signupUsername" placeholder="Username"><br>
+      <input type="email" id="signupEmail" placeholder="Email"><br>
+      <div class="password-wrapper">
+       <input type="password" id="signupPassword" placeholder="Password">
+    <span class="toggle-btn" onclick="togglePassword('signupPassword', this)">Show</span>
+</div>
+
+<br>
+      <button type="button" id="signupButton" onclick="ajaxSignup()">Signup</button>
+    </form>
+    <form id="forgotForm" style="display:none;">
+  <h3>Reset Password</h3>
+  <input type="email" id="forgotEmail" placeholder="Enter your email"><br>
+  <button type="button" onclick="sendResetRequest()">Send Reset Link</button>
+</form>
+
+
+    <div id="authMsg" style="margin-top:10px; color:red;"></div>
+  </div>
+</div>
+
+<div class="content">
+  {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

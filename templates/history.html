@@ -1,0 +1,96 @@
+<!-- templates/history.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+
+{% include 'header.html' %}
+<input type="text" id="historySearch" placeholder="Search history...">
+
+<select id="historyFilter">
+    <option value="">Filter by type</option>
+    <option value="document">Document</option>
+    <option value="image">Image</option>
+    <option value="code">Code</option>
+    <option value="text">Text</option>
+    <option value="url">URL</option>
+
+</select>
+
+<div class="container">
+    <h1>Analysis History</h1>
+
+    <table id="historyTable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Mode</th>
+            <th>File A</th>
+            <th>File B</th>
+            <th>Score</th>
+            <th>Date</th>
+            <th>View A</th>
+            <th>View B</th>
+            <th>Report</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for h in history %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ h.modality }}</td>
+            <td>{{ h.file_a_name }}</td>
+            <td>{{ h.file_b_name }}</td>
+            <td>{{ h.similarity_score }}%</td>
+            <td>{{ h.timestamp }}</td>
+
+            <td>
+                {% if h.save_path_a %}
+                <a href="{{ url_for('view_file', filename=h.save_path_a) }}" target="_blank">
+                    <button  style="width:80px;">Open A</button>
+                </a>
+                {% elif h.text_a %}
+                <a href="{{ url_for('view_text', hid=h.analysis_id, part='a') }}" target="_blank">
+                 <button style="width:80px;">Open A</button>
+                 </a>
+                {% else %}
+                N/A
+                {% endif %}
+            </td>
+
+            <td>
+                {% if h.save_path_b %}
+                <a href="{{ url_for('view_file', filename=h.save_path_b) }}" target="_blank">
+                    <button style="width:80px;">Open B</button>
+                </a>
+                 {% elif h.text_b %}
+                 <a href="{{ url_for('view_text', hid=h.analysis_id, part='b') }}" target="_blank">
+                 <button style="width:80px;">Open B</button>
+                 </a>
+                {% else %}
+                N/A
+                {% endif %}
+            </td>
+
+            <td>
+                <a href="{{ url_for('report', hid=h.analysis_id) }}" target="_blank">
+                    <button style="width:80px;">Report</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div style="margin-top:15px; text-align:center;">
+    <button id="prevPage">Previous</button>
+    <span id="pageInfo"></span>
+    <button id="nextPage">Next</button>
+</div>
+</div>
+<script src="{{ url_for('static', filename='history.js') }}"></script>
+</body>
+</html>
