@@ -1,0 +1,12 @@
+self-introduction
+Hi, I’m Heng Zheng Teck. I’m currently pursuing a Bachelor’s in Data Science at TARUMT. I have practical experience in software and web development from my previous internship, where I worked with Laravel, PHP, JavaScript, SQL, and Git on unit testing, debugging, and backend fixes. I also developed an e-commerce system with my team, handling both frontend and backend tasks.I have basic knowledge of Java and Python, and I’ve done projects in machine learning and reinforcement learning like self-driving car
+
+Why do you want this internship?
+there are three reason that i want internship . the first one is location. i think Your company is located at mid-valley which is near by where i live. Second reason is i have basic knowledge of java , python , html ,css also flutter that closely match your job requirement. I may not help your company to solve the problem right now but i can help your compnay in future. The last reason is i  want to grow into strong software engineer by working on real project.Your team culture of shipping fast, reviewing code, and experimenting matches the environment I want to learn in. 
+
+my weakness
+I‘m sometimes slower in completing my task compare to other people because I really want to get thing right . I will double or triple-check my document or code to make sure everything is accurate.I realized this can slow down progress, so I’m learning to balance quality with speed by setting time limits for tasks.
+
+my strengths
+I am very passionate about learning new things. I enjoy exploring new technologies and I’m always excited to take on new challenges, especially when the task is complex. I don’t give up easily — when I face a difficult bug or problem, I keep trying different approaches until I solve it. I actually enjoy the learning process behind it
+

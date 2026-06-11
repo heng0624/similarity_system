@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Modal Similarity Detection</title>
+  <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet"/>
+  <!-- Include libraries in your HTML head -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.21/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+
+</head>
+<body>
+
+  {% include 'header.html' %}
+
+   <!-- Success popup -->
+  <div id="successMsg" class="success-popup" style="display:none;"></div>
+
+
+  <!-- File Preview -->
+  <div class="preview" id="preview" style="display:none;">
+    <h3>File Preview</h3>
+    <div class="preview-content">
+      <div class="preview-box">
+        <h4>File 1</h4>
+        <div id="file1Preview"></div>
+      </div>
+      <div class="preview-box">
+        <h4>File 2</h4>
+        <div id="file2Preview"></div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Main Container -->
+  <div class="container">
+    <h1>Multi-Modal Similarity Detection</h1>
+      
+    <!-- Upload Section -->
+    <div class="upload-box">
+      <p>Select two files to compare:</p>
+      <input type="file" id="file1"><br>
+      <input type="file" id="file2"><br>
+      <select id="mode">
+        <option value="document">Document</option>
+        <option value="image">Image</option>
+        <option value="code">Code</option>
+      </select><br>
+      <button onclick="runCheck()">Run Similarity Check</button>
+    </div>
+     
+    <!-- Results -->
+    <div id="result" class="result" style="display:none;">
+      <h3>Similarity Result</h3>
+      <p><strong>Mode:</strong> <span id="resMode"></span></p>
+      <p><strong>Score:</strong> <span id="resScore"></span>%</p>
+    </div>
+  </div>
+
+<script src="{{ url_for('static', filename='home.js') }}"></script>
+
+</body>
+</html>
